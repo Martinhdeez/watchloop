@@ -31,10 +31,10 @@
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <span class="nav-icon material-symbols-rounded">notifications</span>
-            <span class="nav-label">Notifications</span>
+            <span class="nav-icon material-symbols-rounded">watch</span>
+            <span class="nav-label">My watches</span>
           </a>
-          <span class="nav-tooltip">Notifications</span>
+          <span class="nav-tooltip">My watches</span>
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link">

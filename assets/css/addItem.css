@@ -15,10 +15,7 @@
     border: 1px solid #5c5854;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 32px;
-    margin-top: 10px;
-
     margin-left: 30%; /* Ancho de la barra lateral */
-    padding: 32px;
     width: calc(100% - 270px); /* Resta el ancho de la barra lateral */
     max-width: 800px;
     background-color: #ffffff;
@@ -193,7 +190,6 @@
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin-top: 24px;
   }
   
   button:hover {

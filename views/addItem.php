@@ -31,6 +31,10 @@
                 <label for="brand" class="form-label">Brand:</label>
                 <input type="text" id="brand" name="brand" class="form-control" required>
             </div>
+            <div class ="param">
+                <label for="price" class="form-label">Price: </label>
+                <input type="number" id="price" name="price" class="form-control" placeholder="Enter price in €" required>
+            </div>
             <div class="param">
                 <label for="condition">Condition: </label>
                 <select name="condition" id="condition" class="form-control">
@@ -51,26 +55,27 @@
                         <input type="file" name="mainPhoto" id="mainPhoto" class="form-control" required>
                     </div>
                     <div class="photo-grid">
-                        <input type="file" name="photo1" id="photo1" class="form-control">
-                        <input type="file" name="photo2" id="photo2" class="form-control">
-                        <input type="file" name="photo3" id="photo3" class="form-control">
-                        <input type="file" name="photo4" id="photo4" class="form-control">
-                        <input type="file" name="photo5" id="photo5" class="form-control">
-                        <input type="file" name="photo6" id="photo6" class="form-control">
-                        <input type="file" name="photo7" id="photo7" class="form-control">
-                        <input type="file" name="photo8" id="photo8" class="form-control">
-                        <input type="file" name="photo9" id="photo9" class="form-control">
-                        <input type="file" name="photo10" id="photo10" class="form-control">
-                        <input type="file" name="photo11" id="photo11" class="form-control">
-                        <input type="file" name="photo12" id="photo12" class="form-control">
-                        <input type="file" name="photo13" id="photo13" class="form-control">
-                        <input type="file" name="photo14" id="photo14" class="form-control">
-                        <input type="file" name="photo15" id="photo15" class="form-control">
-                        <input type="file" name="photo16" id="photo16" class="form-control">
-                        <input type="file" name="photo17" id="photo17" class="form-control">
-                        <input type="file" name="photo18" id="photo18" class="form-control">
-                        <input type="file" name="photo19" id="photo19" class="form-control">
-                        <input type="file" name="photo20" id="photo20" class="form-control">
+                        <input type="file" name="photos[]" id="photo1" class="form-control">
+                        <input type="file" name="photos[]" id="photo2" class="form-control">
+                        <input type="file" name="photos[]" id="photo3" class="form-control">
+                        <input type="file" name="photos[]" id="photo4" class="form-control">
+                        <input type="file" name="photos[]" id="photo5" class="form-control">
+                        <input type="file" name="photos[]" id="photo6" class="form-control">
+                        <input type="file" name="photos[]" id="photo7" class="form-control">
+                        <input type="file" name="photos[]" id="photo8" class="form-control">
+                        <input type="file" name="photos[]" id="photo9" class="form-control">
+                        <input type="file" name="photos[]" id="photo10" class="form-control">
+                        <input type="file" name="photos[]" id="photo11" class="form-control">
+                        <input type="file" name="photos[]" id="photo12" class="form-control">
+                        <input type="file" name="photos[]" id="photo13" class="form-control">
+                        <input type="file" name="photos[]" id="photo14" class="form-control">
+                        <input type="file" name="photos[]" id="photo15" class="form-control">
+                        <input type="file" name="photos[]" id="photo16" class="form-control">
+                        <input type="file" name="photos[]" id="photo17" class="form-control">
+                        <input type="file" name="photos[]" id="photo18" class="form-control">
+                        <input type="file" name="photos[]" id="photo19" class="form-control">
+                        <input type="file" name="photos[]" id="photo20" class="form-control">
+                        <input type="file" name="photos[]" id="photo21" class="form-control">
                     </div >
                 </div>
 
