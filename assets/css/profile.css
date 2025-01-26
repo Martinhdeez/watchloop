@@ -1,0 +1,117 @@
+/* Importing Google Fonts - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+
+
+.profile-content {
+  width: 100%;
+  max-width: 600px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 32px;
+  text-align: center;
+
+}
+
+#section {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px; /* Opcional, si quieres algo de espacio interno */
+    z-index: 1;
+  }
+  
+
+.profile-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: rgb(92, 88, 84);;;
+  margin-bottom: 24px;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: stretch;
+}
+
+.profile-details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.input label {
+  font-weight: 500;
+  color: #555555;
+  margin-top: 10px;
+}
+
+.input input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid rgb(92, 88, 84);
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #333333;
+  transition: border-color 0.3s ease;
+  margin-bottom: 10px;
+}
+
+.input input:focus {
+  outline: none;
+  border-color: rgb(92, 88, 84);;
+}
+
+.edit-profile-button {
+  margin-top: 15px;
+  width: 100%;
+  padding: 12px 0;
+  background-color: rgb(92, 88, 84);;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.edit-profile-button:hover {
+  background-color: rgb(68, 65, 63);
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+  .profile-content {
+    padding: 24px;
+  }
+
+  .profile-title {
+    font-size: 1.5rem;
+  }
+
+  .input input {
+    font-size: 0.95rem;
+  }
+
+  .edit-profile-button {
+    font-size: 0.95rem;
+  }
+}

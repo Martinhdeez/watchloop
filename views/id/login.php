@@ -43,8 +43,8 @@ if (isset($_SESSION["username"])) {
                 <form action="../../controllers/loginController.php" class="login" method="POST">
                     <?php sessionStatus(); ?>
                     <h2>Login</h2>
-                    <input type="text" placeholder="username" name="username">
-                    <input type="password" placeholder="password" name="password">
+                    <input type="text" placeholder="username" name="username" value="<?=isset($_SESSION['form_data']['username']) ? htmlspecialchars($_SESSION['form_data']['username']) : ''; ?>" required>
+                    <input type="password" placeholder="password" name="password" required>
                     <button id="Enter" name="login" type="submit">Enter</button>
                 </form>
 

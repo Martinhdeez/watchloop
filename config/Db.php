@@ -7,6 +7,9 @@ class Db{
     private $dbname= "watchloop_db";
     private $conn;
 
+    public function __construct() {
+        $this->conn = $this->connect();
+    }
     //método para establecer la base de datos
     public function connect() {
         $this->conn = null;
@@ -66,13 +69,13 @@ class Db{
         }
     }
 
-    public function updateUser($username, $email, $password,  $user_id){
+    public function updateUser($name, $surname, $username, $email, $password,  $user_id){
          
         if ($password) {
                 try {
-                    $stmt = $this->conn->prepare("UPDATE users SET username = ?, email = ? , password = ? WHERE id = ?");
-                    if ($stmt->execute([$username, $email, $password, $user_id])) {
-                        return ['id'=>$user_id, 'username' => $username ,'email' => $email];
+                    $stmt = $this->conn->prepare("UPDATE users SET name = ?, surname = ?, username = ?, email = ? , password = ? WHERE id = ?");
+                    if ($stmt->execute([$name, $surname, $username, $email, $password, $user_id])) {
+                        return ['id'=>$user_id, 'name'=> $name, 'surname' => $surname, 'username' => $username ,'email' => $email];
                     }
                     return null;
                 } catch (PDOException $e) {
@@ -80,10 +83,9 @@ class Db{
                 }
             } else {
                 try {
-    
-                    $stmt = $this->conn->prepare("UPDATE users SET username = ?, email = ? WHERE id = ?");
-                    if ($stmt->execute([$username, $email, $user_id])) {
-                        return ['id'=>$user_id, 'username' => $username ,'email' => $email];
+                    $stmt = $this->conn->prepare("UPDATE users SET name = ?, surname = ?,username = ?, email = ? WHERE id = ?");
+                    if ($stmt->execute([$name, $surname, $username, $email, $user_id])) {
+                        return ['id'=>$user_id, 'name'=> $name, 'surname' => $surname, 'username' => $username ,'email' => $email];
                     }
                     return null;
                 } catch (PDOException $e) {

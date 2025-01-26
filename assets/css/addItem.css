@@ -1,0 +1,224 @@
+/* Estilos globales encapsulados */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+  
+
+.watchDetails {
+    width: 100%;
+    max-width: 800px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #5c5854;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 32px;
+    margin-top: 10px;
+
+    margin-left: 30%; /* Ancho de la barra lateral */
+    padding: 32px;
+    width: calc(100% - 270px); /* Resta el ancho de la barra lateral */
+    max-width: 800px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Título */
+.watchDetails .title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #5c5854;
+    text-align: center;
+    margin-bottom: 24px;
+    overflow-y: auto; /* Permite el desplazamiento si el contenido excede la altura */
+}
+  
+  /* Estilos de parámetros */
+  .param {
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .param label {
+    font-weight: 500;
+    color: #555555;
+    margin-bottom: 8px;
+  }
+  
+#photos{
+    color: #555555;
+}
+
+
+  .param input,
+  .param textarea,
+  .param select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #5c5854;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #333333;
+    transition: border-color 0.3s ease;
+  }
+  
+  .param input:focus,
+  .param textarea:focus,
+  .param select:focus {
+    outline: none;
+    border-color: #5c5854;
+  }
+  
+  textarea {
+    resize: none;
+  }
+  
+  .param h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 8px;
+  }
+
+
+  .main_photo {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column; /* Asegura que el input esté debajo de la etiqueta */
+    margin-bottom: 20px; /* Espaciado entre secciones */
+
+  }
+  
+  .main_photo label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #555555;
+    margin-bottom: 8px;
+  }
+  
+  .main_photo input[type="file"] {
+    width: 60px; /* Tamaño del cuadrado */
+    height: 60px;
+    border: 2px dashed #ccc; /* Estilo del borde */
+    border-radius: 8px; /* Bordes redondeados */
+    background-color: #f9f9f9; /* Color de fondo */
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px; /* Texto pequeño */
+    text-align: center;
+    color: #888;
+    transition: all 0.3s ease;
+    margin-top: 8px; /* Espaciado superior para separar la etiqueta del input */
+  }
+  
+  .main_photo input[type="file"]::-webkit-file-upload-button {
+    visibility: hidden; /* Oculta el botón predeterminado del input */
+  }
+  
+  .main_photo input[type="file"]::before {
+    content: "📷"; /* Icono representativo */
+    font-size: 20px;
+    display: block;
+    text-align: center;
+    color: #5c5854;
+  }
+  
+
+  /* Estilos para los inputs de fotos */
+    .photo-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr); /* Crea 5 columnas iguales */
+        gap: 10px; /* Espaciado entre los elementos */
+        margin-top: 16px; /* Espaciado superior opcional */
+        border: 1px solid #5c5854;
+        padding-right: -10%;
+        padding-top: 3%;
+        padding-left: 8%;
+        padding-bottom: 4%;
+    } 
+  
+  .photo-grid input[type="file"] {
+    width: 60px; /* Tamaño del cuadrado */
+    height: 60px;
+    border: 2px dashed #ccc; /* Estilo del borde */
+    border-radius: 8px; /* Bordes redondeados */
+    background-color: #f9f9f9; /* Color de fondo */
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px; /* Texto pequeño */
+    text-align: center;
+    color: #888;
+    transition: all 0.3s ease;
+  }
+  
+  .photo-grid input[type="file"]:hover {
+    border-color: #5c5854; /* Cambia el color del borde al pasar el mouse */
+    background-color: #eee; /* Cambia el fondo al pasar el mouse */
+  }
+  
+  .photo-grid input[type="file"]::-webkit-file-upload-button {
+    visibility: hidden; /* Oculta el botón predeterminado del input */
+  }
+  
+  .photo-grid input[type="file"]::before {
+    content: "📷"; /* Icono representativo */
+    font-size: 20px;
+    display: block;
+    text-align: center;
+    color: #5c5854;
+  }
+  
+  
+  /* Botón */
+  button {
+    width: 100%;
+    padding: 14px;
+    background-color: #5c5854;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 24px;
+  }
+  
+  button:hover {
+    background-color: #44413f;
+  }
+  
+/* Media query para dispositivos pequeños */
+@media (max-width: 993px) {
+    .watchDetails {
+        padding: 24px;
+        margin-left: 15%; /* En pantallas pequeñas, elimina el margen de la barra lateral */
+        margin-top:6%;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative; /* Hace que la barra lateral no esté fija en pantallas pequeñas */
+    }
+
+    .watchDetails .title {
+        font-size: 1.5rem;
+    }
+
+    button {
+        font-size: 0.95rem;
+    }
+}

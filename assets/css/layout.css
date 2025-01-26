@@ -10,7 +10,7 @@
 
 body {
   min-height: 100vh;
-  background: linear-gradient(#F1FAFF, #CBE4FF);
+  background: white;
 }
 
 .sidebar {
@@ -21,7 +21,25 @@ body {
   background: rgb(92, 88, 84);
   height: calc(100vh - 32px);
   transition: all 0.4s ease;
+  z-index: 10;
 }
+
+#welcome{
+  font-size: 23px;
+  color: rgb(92, 88, 84);
+  font-weight: bold;
+}
+
+.success {
+  color: rgb(104, 100, 96);
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: 102px; 
+  margin-left: 40%;
+  display: inline-block; /* Esto evita que se apilen márgenes verticales */
+}
+
 
 .sidebar.collapsed {
   width: 85px;
@@ -30,6 +48,7 @@ body {
 .sidebar .sidebar-header {
   display: flex;
   position: relative;
+  z-index: 10;
   padding: 25px 20px;
   align-items: center;
   justify-content: space-between;
@@ -50,11 +69,12 @@ body {
   border: none;
   cursor: pointer;
   display: flex;
-  background: #fff;
+  background: white;
   align-items: center;
   justify-content: center;
   border-radius: 8px;
   transition: 0.4s ease;
+  z-index: 10;
 }
 
 .sidebar-header .sidebar-toggler {
@@ -71,7 +91,7 @@ body {
 }
 
 .sidebar-header .toggler:hover {
-  background: #dde4fb;
+  background: white;
 }
 
 .sidebar-header .toggler span {

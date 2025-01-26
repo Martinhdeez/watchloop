@@ -1,7 +1,7 @@
     <aside class="sidebar">
     <!-- Sidebar header -->
     <header class="sidebar-header">
-      <a href="#" class="header-logo">
+      <a href="../views/index.php" class="header-logo">
         <img src="../assets/img/logo.webp" alt="CodingNepal">
       </a>
       <button class="toggler sidebar-toggler">
@@ -16,18 +16,18 @@
       <!-- Primary top nav -->
       <ul class="nav-list primary-nav">
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="../views/index.php" class="nav-link">
             <span class="nav-icon material-symbols-rounded">dashboard</span>
-            <span class="nav-label">Dashboard</span>
+            <span class="nav-label">Discover</span>
           </a>
-          <span class="nav-tooltip">Dashboard</span>
+          <span class="nav-tooltip">Discover</span>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">
-            <span class="nav-icon material-symbols-rounded">calendar_today</span>
-            <span class="nav-label">Calendar</span>
+          <a href="../views/addItem.php" class="nav-link">
+            <span class="nav-icon material-symbols-rounded">attach_money</span>
+            <span class="nav-label">Shell</span>
           </a>
-          <span class="nav-tooltip">Calendar</span>
+          <span class="nav-tooltip">Shell</span>
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link">
@@ -69,7 +69,7 @@
       <!-- Secondary bottom nav -->
       <ul class="nav-list secondary-nav">
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="../views/profile.php" class="nav-link">
             <span class="nav-icon material-symbols-rounded">account_circle</span>
             <span class="nav-label">Profile</span>
           </a>
