@@ -21,13 +21,19 @@
 
 }
 
+
 #section {
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    padding: 20px; /* Opcional, si quieres algo de espacio interno */
-    z-index: 1;
-  }
+  width: 300px;
+  height: 200px;
+  background-color: #3498db;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
   
 
 .profile-title {

@@ -141,11 +141,9 @@ public function displayWatches() {
 
     public function setExtension($watchId, $img){
         $imagePathBase = "../publicIMG/$this->user_id/watch_$watchId/$img"; // Ruta base de la imagen
-
         // Posibles extensiones de la imagen
         $possibleExtensions = ['.jpg', '.jpeg', '.png', '.webp', '.gif', '.svg', '.ico', '.jp2', 'j2k'];
         $imageSrc = null;
-
         // Busca la primera imagen válida en las posibles extensiones
         foreach ($possibleExtensions as $ext) {
             $imagePath = $imagePathBase . $ext;
