@@ -1,0 +1,95 @@
+/* Importing Google Fonts - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: white;
+}
+
+
+#image-carousel {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.carousel-images {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+    width: 100%;
+}
+
+.carousel-images img {
+    min-width: 100%;
+    height: auto;
+}
+
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 50%;
+    z-index: 10;
+}
+
+#prev {
+    left: 10px;
+}
+
+#next {
+    right: 10px;
+}
+
+.carousel-arrow:focus {
+    outline: none;
+}
+
+#container{
+    border: 0.5px solid rgba(128, 128, 128, 0.452);
+    border-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    padding: 32px;
+    margin-left: 30%;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20%;
+    width: 500px;
+}
+
+
+.image{
+    border-radius: 4px;;
+    height: 300px;
+}
+
+.details{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+
+}
+
+#title{
+    font-size: 23px;
+    margin-top: 5px;
+    color: rgb(92, 88, 84);
+}
