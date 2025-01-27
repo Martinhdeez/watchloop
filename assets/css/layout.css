@@ -30,16 +30,23 @@ body {
   font-weight: bold;
 }
 
+
 .success {
   color: rgb(104, 100, 96);
   text-align: center;
   font-size: 25px;
   font-weight: bold;
-  margin-top: 102px; 
-  margin-left: 40%;
-  display: inline-block; /* Esto evita que se apilen márgenes verticales */
+  margin-top: 50px; /* Valor por defecto para pantallas grandes */
+  margin-left: 25%;
+  display: inline-block; /* Esto evita problemas de márgenes verticales */
 }
 
+@media (max-width: 995px) { /* Cambios para pantallas más pequeñas */
+  .success {
+    margin-left: 10%;
+    margin-top: 102px;
+  }
+}
 
 .sidebar.collapsed {
   width: 85px;

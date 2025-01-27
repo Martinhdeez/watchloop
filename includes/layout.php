@@ -30,7 +30,7 @@
           <span class="nav-tooltip">Shell</span>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="../views/mywatches.php" class="nav-link">
             <span class="nav-icon material-symbols-rounded">watch</span>
             <span class="nav-label">My watches</span>
           </a>

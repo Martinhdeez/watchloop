@@ -18,3 +18,10 @@ function sessionStatus() {
     }
 
 }
+
+function displayImages($imagesPath){
+    foreach($imagesPath as $path){
+        if(!$path)break;
+        echo '<img class="watch-img" src="'.$path.'" alt="">';
+    }
+}

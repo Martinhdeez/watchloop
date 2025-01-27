@@ -17,19 +17,54 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $price = $_POST['price'];
     $condition = $_POST['condition'];
 
-
-    $watch = new Watch($db, $user_id, $name , $description,  $condition, $price);
-
+    // Crear una instancia de Watch y llamar al método upload para insertar el reloj
+    $watch = new Watch($db, $user_id, $name , $description, $condition, $price);
     $res = $watch->upload();
 
+    // Si la inserción fue exitosa, obtenemos la última ID insertada
     if ($res) {
+        $last_id = $watch->id;
+        echo "Archivo con id: $last_id\n";
         $_SESSION['success'] = "Watch uploaded successfully";
+
     } else {
         $_SESSION["error"] = $res;
+        echo "error no ha conseguido subir bien el archivo\n";
         header("Location: ../views/index.php");
         exit();
     }
 
+    //foto principal
+
+    $main_photo = $_FILES['mainPhoto'];
+    echo "entra en main photo";
+    $file_info = pathinfo($main_photo['name']);
+    $ext = $file_info['extension'];
+    $folder_name = "../publicIMG/" . $_SESSION['user_id'];
+
+
+    if (!file_exists($folder_name)) {
+        echo "crea el directorio";
+        mkdir($folder_name, 0777, true);
+    }
+
+    $folder_name = $folder_name . "/watch_" . $last_id;
+
+
+    if (!file_exists($folder_name)) {
+        echo "crea el directorio";
+        mkdir($folder_name, 0777, true);
+    }
+
+    // Generamos un nuevo nombre para la foto principal
+    $new_file_name = $folder_name . "/main." . $ext;
+
+    if (move_uploaded_file($main_photo['tmp_name'], $new_file_name)) {
+        echo "ha movido la carpeta exitosamente\n";
+        $main_photo = $new_file_name;
+    } else {
+        echo "Error al mover el archivo: " . $main_photo['name'];
+    }
 
     // Verificamos si se enviaron archivos
     if (isset($_FILES['photos']) && count($_FILES['photos']['name']) > 0) {
@@ -38,50 +73,29 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
         // Iteramos sobre cada archivo en el arreglo 'photos'
         for ($i = 0; $i < count($_FILES['photos']['name']); $i++) {
-            // Obtenemos el nombre y la ruta temporal de la foto
-            $file_name = $_FILES['photos']['name'][$i];  // Nombre original del archivo
-            $tmp_name = $_FILES['photos']['tmp_name'][$i]; // Ruta temporal del archivo
+            $file_name = $_FILES['photos']['name'][$i];
+            $tmp_name = $_FILES['photos']['tmp_name'][$i];
 
-            // Comprobamos si no hubo error al subir el archivo
             if ($_FILES['photos']['error'][$i] === UPLOAD_ERR_OK) {
-                // Extraemos la extensión del archivo usando pathinfo
                 $file_info = pathinfo($file_name);
-                $ext = $file_info['extension'];  // Obtiene la extensión del archivo (ej. 'jpg', 'png')
+                $ext = $file_info['extension'];
 
-                // Crear una carpeta con la ID del producto (por ejemplo, 'watch_1234')
-                $folder_name = "../publicIMG/watch_" . $last_inserted_id;
+                // Crear una carpeta con la ID del producto
+                $folder_name = "../publicIMG/".$_SESSION['user_id']."/watch_" . $last_id;
                 if (!file_exists($folder_name)) {
-                    mkdir($folder_name, 0777, true);  // Crear la carpeta si no existe
+                    mkdir($folder_name, 0777, true);
                 }
 
-                // Generamos un nuevo nombre para la foto con un número secuencial
+                // Generamos un nuevo nombre para la foto
                 $new_file_name = $folder_name . "/" . ($i + 1) . "." . $ext;
 
-                // Movemos el archivo a la carpeta recién creada
                 if (move_uploaded_file($tmp_name, $new_file_name)) {
-                    // Si se movió correctamente, lo agregamos al arreglo
                     $photos[] = $new_file_name;
                 } else {
                     echo "Error al mover el archivo: $file_name";
                 }
             }
         }
-
-        
-    } 
-    $main_photo = $_FILES['mainPhoto'];
-    $file_info = pathinfo($main_photo);
-    $ext = $file_info['extension'];
-    $folder_name = "../publicIMG/watch_" . $last_inserted_id;
-    if (!file_exists($folder_name)) {
-        mkdir($folder_name, 0777, true);  // Crear la carpeta si no existe
-    }
-    $new_file_name = $folder_name . "/main" . $ext;
-    if (move_uploaded_file($main_photo, $new_file_name)) {
-        // Si se movió correctamente, lo agregamos al arreglo
-        $main_photo = $new_file_name;
-    } else {
-        echo "Error al mover el archivo: $main_photo";
     }
 
 }

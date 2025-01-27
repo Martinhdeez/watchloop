@@ -48,7 +48,7 @@ class Db{
         //Retornar todos los registros como un array asociativo
         return $stmt->fetchAll(PDO::FETCH_ASSOC);/*en el caso que haya más de una fila en el resultado de consulta SQL 
                                                 devuelve una lista de arrays con todos los resultados, un array por fila */ 
-    }  
+    } 
 
      //funciones de usuario
     public function getUser($user_id){
