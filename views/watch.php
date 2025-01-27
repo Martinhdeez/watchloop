@@ -5,7 +5,6 @@
     require_once "../includes/header.php";
 ?>  
 <link rel="stylesheet" href="../assets/css/item.css">
-<link rel="stylesheet" href="../assets/css/carousel.css"> <!-- Nuevo archivo CSS -->
 </head>
 <body>
 <?php
@@ -21,6 +20,7 @@
     $watch = $w->getWatchById($watchId);
     $imagesPath = $w->setAllExtensions($watchId);
 ?>
+<div id="content">
 <div id="container">
     <div id="image-carousel">
         <div class="carousel-images">
@@ -32,13 +32,21 @@
         <button id="next" class="carousel-arrow">&#9654;</button>
     </div>
     <div id="details">
-        <h1 id="title"><?php echo $watch['name']; ?></h1>
-        <p id="description"><?php echo $watch['description']; ?></p>
-        <p id="price"><?php echo $watch['price']; ?> €</p>
-        <p id="condition"><?php echo $watch['wcondition']; ?></p>
-        <p id="date"><?php echo $watch['created_at']; ?></p>
+        <form action="../controllers/watchController.php" method="post">
+            <input type="hidden" name="watchId" value="<?=$watchId?>">
+            <input id="title" name="name" value="<?php echo $watch['name']; ?>"></input>
+            <input id="description" name="description" value="<?php echo $watch['description']; ?>"></input>
+            <input id="price" name="price" value="<?php echo $watch['price']; ?>"></input><span id="eur">€</span>
+            <input id="condition" name="condition" value="<?php echo $watch['wcondition']; ?>"></input>
+            <p id="date" name="date"> <?php echo $watch['created_at']; ?></p>
+            <button id="sumbmit" type="submit">Save</button>
+        </form>
+
+        
     </div>
 </div>
+</div>
+
 
 <script src="../assets/js/carousel.js"></script> <!-- Nuevo archivo JS -->
 </body>

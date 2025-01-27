@@ -36,6 +36,15 @@ class Watch{
         }
     }
 
+    public function upgrade($watchId, $name, $description, $condition, $price){
+        try {
+            $stmt = $this->conn->prepare("UPDATE '.$this->table.' SET name = ?, description = ?, wcondition = ? , price = ? WHERE id = ?");
+            return $stmt->execute([$name, $description, $condition, $price, $watchId]); 
+        } catch (PDOException $e) {
+            return ['error' => $e->getMessage()];
+        }
+    }
+
     public function getWatchesByUser($user_id){
         try {
             $stmt = $this->conn->prepare("SELECT * FROM ". $this->table." WHERE user_id = ?");
