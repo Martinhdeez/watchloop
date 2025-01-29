@@ -38,12 +38,22 @@ class Watch{
 
     public function upgrade($watchId, $name, $description, $condition, $price){
         try {
-            $stmt = $this->conn->prepare("UPDATE '.$this->table.' SET name = ?, description = ?, wcondition = ? , price = ? WHERE id = ?");
-            return $stmt->execute([$name, $description, $condition, $price, $watchId]); 
+            $stmt = $this->conn->prepare("UPDATE ".$this->table." SET name = ?, description = ?, price = ?, wcondition = ?  WHERE id = ?");
+            return $stmt->execute([$name, $description, $price, $condition, $watchId]); 
         } catch (PDOException $e) {
             return ['error' => $e->getMessage()];
         }
     }
+
+    public function delete($watchId){
+        try{
+            $stmt = $this->conn->prepare("DELETE FROM ". $this->table." WHERE id = ?");
+            return $stmt->execute([$watchId]);
+        } catch(PDOException $e){
+            return ['error' => $e->getMessage()];
+        }
+    }
+
 
     public function getWatchesByUser($user_id){
         try {
@@ -56,6 +66,21 @@ class Watch{
                 return $watches; 
             } else {
                 return ['error' => 'Usuario no encontrada.']; 
+            }
+        } catch (PDOException $e) {
+            return ['error' => $e->getMessage()];
+        }
+    }
+
+    public function getAllWatches(){
+        try {
+            $stmt = $this->conn->prepare("SELECT * FROM ". $this->table);
+            $success = $stmt->execute();
+            $watches = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            if ($success) {
+                return $watches;
+            } else {
+                return ['error' => 'No se encontraron relojes.'];
             }
         } catch (PDOException $e) {
             return ['error' => $e->getMessage()];
@@ -91,6 +116,60 @@ public function getConditionLabel($condition) {
 
     return isset($conditions[$condition]) ? $conditions[$condition] : 'Unknown';
 }
+
+
+public function displayWatchesTable($watches) {
+    echo '<table id="watchesTable" class="display responsive nowrap">';
+    echo '<thead><tr>';
+    echo '<th>Nombre</th>';
+    echo '<th>Condición</th>';
+    echo '<th>Precio</th>';
+    echo '<th>Imagen</th>';
+    echo '</tr></thead><tbody>';
+
+    // Recorre cada reloj y muestra su información en una fila de la tabla
+    foreach ($watches as $watch) {
+        $watchId = $watch['id']; // El ID del reloj
+        $user_id = $watch['user_id']; // El ID del usuario
+        $watchName = htmlspecialchars($watch['name']); // Nombre del reloj
+        $watchCondition = $watch['wcondition']; // Condición del reloj
+        $watchPrice = htmlspecialchars($watch['price']); // Precio del reloj
+        $imagePathBase = "../publicIMG/$user_id/watch_$watchId/main"; // Ruta base de la imagen
+
+        // Posibles extensiones de la imagen
+        $possibleExtensions = ['.jpg', '.jpeg', '.png', '.webp', '.gif', '.svg', '.ico', '.jp2', 'j2k'];
+        $imageSrc = null;
+
+        // Busca la primera imagen válida en las posibles extensiones
+        foreach ($possibleExtensions as $ext) {
+            $imagePath = $imagePathBase . $ext;
+            if (file_exists($imagePath)) {
+                $imageSrc = $imagePath;
+                break;
+            }
+        }
+        if (!$imageSrc) {
+            $imageSrc = 'default.jpg'; // Ruta de imagen predeterminada si no se encuentra una válida
+        }
+
+        // Convertir precio a euros
+        $priceInEuros = number_format($watchPrice, 2);
+
+        // Mostrar una fila con la información del reloj en la tabla
+        echo '<tr>';
+        echo '<td><a href="../views/watch.php?id='. $watchId .'" class="watch-a">' . $watchName . '</a></td>';
+        echo '<td>' . $watchCondition . '</td>';
+        echo '<td>' . $priceInEuros . '€</td>';
+        echo '<td><img src="' . $imageSrc . '" alt="' . $watchName . '" class="watch-image" style="width: 50px; height: 50px;"></td>';
+        echo '</tr>';
+    }
+
+    // Cierra el cuerpo de la tabla
+    echo '</tbody></table>';
+}
+
+
+
 
 public function displayWatches() {
     $user_id = $this->user_id;

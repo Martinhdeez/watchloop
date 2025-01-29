@@ -39,10 +39,17 @@
             <input id="price" name="price" value="<?php echo $watch['price']; ?>"></input><span id="eur">€</span>
             <input id="condition" name="condition" value="<?php echo $watch['wcondition']; ?>"></input>
             <p id="date" name="date"> <?php echo $watch['created_at']; ?></p>
-            <button id="sumbmit" type="submit">Save</button>
+            <button name="update" type="submit">Save</button>
+        </form>
+    
+        
+    </div>
+    <div id="delete-div">
+        <form action="../controllers/watchController.php" method="post">
+            <input type="hidden" name="watchId" value="<?=$watchId?>">
+            <button name="delete" type="submit">Delete</button>
         </form>
 
-        
     </div>
 </div>
 </div>

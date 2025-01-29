@@ -7,9 +7,7 @@
     require_once "../auth/auth.php";
     require_once "../config/Db.php";
     require_once "../models/Watch.php";
-
-
-
+    
     $db = new Db();
 
     $watch = new Watch($db, $_SESSION['user_id'], null, null, null, null);

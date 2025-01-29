@@ -1,52 +1,76 @@
-/* Importing Google Fonts - Poppins */
+/* Importando Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
 }
 
-#content{
-    align-items: center;
+/* Ajuste para el contenido con aside */
+#content {
+    display: flex;
     justify-content: center;
-
-
+    align-items: center;
+    min-height: 100vh;
+    margin-left: 310px; /* Espacio para el aside */
+    padding: 20px;
+    background-color: #f4f4f4;
 }
+
+/* Contenedor principal */
+#container {
+    background: white;
+    width: 55%;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Carrusel */
 #image-carousel {
     position: relative;
     width: 100%;
-    max-width: 600px;
-    margin: auto;
+    max-width: 550px;
     overflow: hidden;
-    border: 1px solid #ccc;
     border-radius: 10px;
-} 
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);
+}
 
 .carousel-images {
     display: flex;
     transition: transform 0.3s ease-in-out;
-    width: 100%;
 }
 
 .carousel-images img {
-    min-width: 100%;
+    width: 100%;
     height: auto;
+    border-radius: 10px;
 }
 
+/* Flechas del carrusel */
 .carousel-arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.6);
     color: white;
     border: none;
     padding: 10px;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 20px;
     border-radius: 50%;
-    z-index: 10;
+    z-index: 2;
+    transition: background 0.3s;
+}
+
+.carousel-arrow:hover {
+    background: rgba(0, 0, 0, 0.8);
 }
 
 #prev {
@@ -57,40 +81,82 @@
     right: 10px;
 }
 
-.carousel-arrow:focus {
+/* Formulario de detalles */
+#details {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+}
+
+/* Inputs */
+input {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    transition: border 0.3s;
+}
+
+input:focus {
+    border-color: #007BFF;
     outline: none;
 }
 
-#container{
-    width: 60%;
-    margin-left: 25%;
+/* Estilo específico de campos */
+#title {
+    font-size: 22px;
+    font-weight: 600;
+    text-align: center;
+    border: none;
+    background: none;
 }
 
-
-.image{
-
-}
-
-.details{
-
-
-}
-
-#title{
-    font-size: 23px;
-    margin-top: 5px;
-    color: rgb(92, 88, 84);
-}
-
-#price{
+#price {
+    font-size: 18px;
     font-weight: bold;
+    color: #27ae60;
+    text-align: center;
 }
 
-#condition{
-    color: rgba(122, 118, 118, 0.945);
+#condition {
+    font-size: 15px;
+    font-style: italic;
+    color: #555;
 }
 
-#date{
-
+#date {
+    font-size: 14px;
+    color: gray;
+    text-align: center;
 }
 
+/* Botón de actualización */
+button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    background: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+/* Botón de eliminación */
+#delete-div button {
+    background: #d9534f;
+}
+
+#delete-div button:hover {
+    background: #c9302c;
+}
