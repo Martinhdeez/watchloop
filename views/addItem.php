@@ -9,7 +9,7 @@ require_once "../includes/header.php";
   require_once "../includes/functions.php"; 
   require_once "../includes/layout.php";
 ?>
-
+<div id="content">
 <div class="watchDetails">
         <form action="../controllers/createItemController.php" method="post" class="form" enctype="multipart/form-data">
             <h2 class="title">Watch Details</h2>
@@ -78,5 +78,8 @@ require_once "../includes/header.php";
             <button type="submit">Upload watch</button>
         </form>
     </div>
+
+</div>
+
 </body>
 </html>

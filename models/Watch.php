@@ -118,16 +118,10 @@ public function getConditionLabel($condition) {
 }
 
 
-public function displayWatchesTable($watches) {
-    echo '<table id="watchesTable" class="display responsive nowrap">';
-    echo '<thead><tr>';
-    echo '<th>Nombre</th>';
-    echo '<th>Condición</th>';
-    echo '<th>Precio</th>';
-    echo '<th>Imagen</th>';
-    echo '</tr></thead><tbody>';
-
-    // Recorre cada reloj y muestra su información en una fila de la tabla
+public function getWatchesArray() {
+    $watchArray = []; // Array que almacenará todos los relojes
+    $watches = $this->getAllWatches(); // Obtener todos los relojes
+    // Recorre cada reloj y agrega sus datos al array
     foreach ($watches as $watch) {
         $watchId = $watch['id']; // El ID del reloj
         $user_id = $watch['user_id']; // El ID del usuario
@@ -155,17 +149,22 @@ public function displayWatchesTable($watches) {
         // Convertir precio a euros
         $priceInEuros = number_format($watchPrice, 2);
 
-        // Mostrar una fila con la información del reloj en la tabla
-        echo '<tr>';
-        echo '<td><a href="../views/watch.php?id='. $watchId .'" class="watch-a">' . $watchName . '</a></td>';
-        echo '<td>' . $watchCondition . '</td>';
-        echo '<td>' . $priceInEuros . '€</td>';
-        echo '<td><img src="' . $imageSrc . '" alt="' . $watchName . '" class="watch-image" style="width: 50px; height: 50px;"></td>';
-        echo '</tr>';
+        // Crear un array asociativo para el reloj
+        $watchData = [
+            'id' => $watchId,
+            'user_id' => $user_id,
+            'name' => $watchName,
+            'condition' => $watchCondition,
+            'price' => $priceInEuros,
+            'image' => $imageSrc
+        ];
+
+        // Agregar el reloj al array principal
+        $watchArray[] = $watchData;
     }
 
-    // Cierra el cuerpo de la tabla
-    echo '</tbody></table>';
+    // Devolver el array con todos los relojes
+    return $watchArray;
 }
 
 

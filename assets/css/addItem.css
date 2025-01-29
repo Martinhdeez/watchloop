@@ -2,25 +2,18 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     font-family: "Poppins", sans-serif;
 }
-  
 
 .watchDetails {
     width: 100%;
     max-width: 800px;
     background-color: #ffffff;
-    border-radius: 16px;
-    border: 1px solid #5c5854;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 32px;
     margin-left: 30%; /* Ancho de la barra lateral */
     width: calc(100% - 270px); /* Resta el ancho de la barra lateral */
     max-width: 800px;
     background-color: #ffffff;
-    border-radius: 16px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     justify-content: center;
