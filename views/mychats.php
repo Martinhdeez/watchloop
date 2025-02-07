@@ -22,7 +22,7 @@
 
     $chat = new Chat();
 
-    $w = new Watch($db, null, null, null, null, null);
+    $w = new Watch($db, null, null, null, null, null, null);
 
     $chats = $chat->listChatsForUser($_SESSION['user_id']);
 ?>

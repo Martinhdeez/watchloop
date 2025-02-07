@@ -5,17 +5,31 @@
     gap: 35px; /* Aumentamos aún más el espacio entre chats */
     padding: 40px; /* Más espacio interior */
     max-width: calc(100% - 550px); /* Restar el ancho del aside */
-    margin-left: 550px; /* Mueve la columna de chats para que empiece después del aside */
 }
 
 /* Título centrado con color marrón grisáceo */
 .chat-header h2 {
     text-align: center;
-    color: #6C4F3D; /* Color marrón grisáceo */
+    color: rgb(104, 100, 96); /* Color marrón grisáceo */
     font-size: 36px; /* Aumentamos el tamaño del título */
     font-weight: bold;
     margin-bottom: 40px; /* Espacio debajo del título */
+    position: absolute;
+    margin-left: 42%;
+    margin-top: 15px;
+    
 }
+
+.chats-container{
+    margin-top: 5%;
+    position:absolute;
+    display: box;
+    border: 1px solid  rgb(104, 100, 96);
+    border-radius: 20px;
+    width: 60%;
+    margin-left: 20%;
+}
+
 
 /* Estilo para cada chat */
 .chat-item {

@@ -12,7 +12,7 @@
 
     $db = new Db();
 
-    $w = new Watch($db, null, null, null, null, null);
+    $w = new Watch($db, null, null, null, null, null, null);
     $watch = $w->getWatchById($watchId);
     $user = $db->getUser($watch['user_id']);
 

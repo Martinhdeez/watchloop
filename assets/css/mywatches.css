@@ -1,0 +1,96 @@
+* {
+    text-decoration: none !important;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+h1#title {
+    text-align: center;
+    margin: 20px 0;
+    color: rgb(104, 100, 96);
+}
+
+.watches-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 relojes por fila */
+    gap: 20px; /* Espaciado entre las tarjetas */
+    justify-content: center;
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.watch-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease-in-out;
+    width: 250px !important; /* Tamaño fijo de las cajas */
+    text-decoration: none;
+    justify-self: center; /* Asegura que no ocupen el 100% del ancho */
+}
+
+.watch-card:hover {
+    transform: translateY(-10px);
+}
+
+.watch-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.watch-card .content {
+    padding: 15px;
+}
+
+.watch-card .watch-name {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.watch-card .watch-price {
+    font-size: 17px;
+    color: rgb(48, 47, 47);
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: right;
+}
+
+.watch-card .watch-condition {
+    font-size: 14px;
+    color: #888;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 1024px) {
+    #container {
+        grid-template-columns: repeat(3, 1fr); /* 3 relojes por fila en pantallas medianas */
+    }
+}
+
+@media (max-width: 768px) {
+    #container {
+        grid-template-columns: repeat(2, 1fr); /* 2 relojes por fila en tablets */
+    }
+}
+
+@media (max-width: 480px) {
+    #container {
+        grid-template-columns: repeat(1, 1fr); /* 1 reloj por fila en móviles */
+    }
+}

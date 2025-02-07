@@ -10,11 +10,11 @@
     
     $db = new Db();
 
-    $watch = new Watch($db, $_SESSION['user_id'], null, null, null, null);
+    $watch = new Watch($db, $_SESSION['user_id'], null, null, null, null, null);
     require_once "../includes/header.php";
     
  ?>   
- <link rel="stylesheet" href="../assets/css/watch.css">
+ <link rel="stylesheet" href="../assets/css/mywatches.css">
  </head> 
 <body>
 <?php

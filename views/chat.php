@@ -41,7 +41,7 @@ $messages = $chat->getMessages($chat_id);
 
 $db = new Db();
 // Fetch watch details
-$w = new Watch($db, $receiver_id, null, null, null, null);
+$w = new Watch($db, $receiver_id, null, null, null, null, null);
 $watch = $w->getWatchById($watch_id);
 
 $user = $db->getUser($receiver_id);

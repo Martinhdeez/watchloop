@@ -4,7 +4,7 @@
     error_reporting(E_ALL);
     require_once "../includes/header.php";
 ?>  
-<link rel="stylesheet" href="../assets/css/item.css">
+<link rel="stylesheet" href="../assets/css/watch.css">
 </head>
 <body>
 <?php
@@ -15,7 +15,7 @@
 
     $user_id = $_SESSION['user_id'];
     $db = new Db();
-    $w = new Watch($db, $user_id, null, null, null, null);
+    $w = new Watch($db, $user_id, null, null, null, null, null);
     $watchId = $_GET['id'];
     $watch = $w->getWatchById($watchId);
     $imagesPath = $w->setAllExtensions($watchId);
@@ -36,7 +36,7 @@
             <input type="hidden" name="watchId" value="<?=$watchId?>">
             <input id="title" name="name" value="<?php echo $watch['name']; ?>"></input>
             <input id="description" name="description" value="<?php echo $watch['description']; ?>"></input>
-            <input id="price" name="price" value="<?php echo $watch['price']; ?>"></input><span id="eur">€</span>
+            <input id="price" name="price" value="<?php echo $watch['price']; ?>"></input>€
             <input id="condition" name="condition" value="<?php echo $watch['wcondition']; ?>"></input>
             <p id="date" name="date"> <?php echo $watch['created_at']; ?></p>
             <button name="update" type="submit">Save</button>

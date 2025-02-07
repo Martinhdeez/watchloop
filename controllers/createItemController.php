@@ -16,9 +16,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $description = $_POST['description'];
     $price = $_POST['price'];
     $condition = $_POST['condition'];
+    $brand = $_POST['brand'];
 
     // Crear una instancia de Watch y llamar al método upload para insertar el reloj
-    $watch = new Watch($db, $user_id, $name , $description, $condition, $price);
+    $watch = new Watch($db, $user_id, $name , $description,$brand, $condition, $price);
     $res = $watch->upload();
 
     // Si la inserción fue exitosa, obtenemos la última ID insertada

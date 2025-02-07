@@ -9,15 +9,17 @@ class Watch{
     public $name;
     public $description;
     public $location;
+    public $brand;
     public $condition;
     public $price;
 
-    public function __construct($db, $user_id, $name, $description, $condition, $price){  
+    public function __construct($db, $user_id, $name, $description, $brand, $condition, $price){  
         $this->user_id = $user_id;  
         $this->name = $name;    
         $this->description = $description;  
         $this->condition = $condition;
         $this->price = $price;
+        $this->brand = $brand;
         $this->conn = $db->connect();
     }
 
@@ -26,9 +28,9 @@ class Watch{
             return "Name must be between 3 and 50 characters.";
         }
     
-        $sql = "INSERT INTO " . $this->table . " (user_id, name, description, wcondition, price) VALUES (?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO " . $this->table . " (user_id, name, description, brand, wcondition, price) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $this->conn->prepare($sql);
-        $res = $stmt->execute([$this->user_id, $this->name, $this->description, $this->condition, $this->price]); 
+        $res = $stmt->execute([$this->user_id, $this->name, $this->description, $this->brand, $this->condition, $this->price]); 
     
         if ($res) {
             $this->id = $this->conn->lastInsertId();
@@ -134,6 +136,7 @@ public function getWatchesArray() {
         $watchId = $watch['id']; // El ID del reloj
         $user_id = $watch['user_id']; // El ID del usuario
         $watchName = htmlspecialchars($watch['name']); // Nombre del reloj
+        $watchBrand = $watch['brand'];
         $watchCondition = $watch['wcondition']; // Condición del reloj
         $watchPrice = htmlspecialchars($watch['price']); // Precio del reloj
         $imagePathBase = "../publicIMG/$user_id/watch_$watchId/main"; // Ruta base de la imagen
@@ -162,6 +165,7 @@ public function getWatchesArray() {
             'id' => $watchId,
             'user_id' => $user_id,
             'name' => $watchName,
+            'brand' => $watchBrand,
             'condition' => $watchCondition,
             'price' => $priceInEuros,
             'image' => $imageSrc
@@ -216,11 +220,13 @@ public function displayWatches() {
         $priceInEuros = number_format($watchPrice, 2); // Aquí podrías integrar una API de cambio de divisas
 
         // Muestra el div con la información del reloj
-        echo '<a href="../views/watch.php?id='. $watchId .'" class="watch-card">'; // Ahora el enlace envuelve todo el div del reloj
+        echo '<div  class="watch-card">';
+        echo '<a href="../views/watch.php?id='. $watchId .'">'; // Ahora el enlace envuelve todo el div del reloj
         echo '<img src="' . $imageSrc . '" alt="' . $watchName . '" class="watch-image">';
         echo '<p class="watch-name">' . $watchName . '</p>';
         echo '<p class="watch-condition">Condition: ' . $watchCondition . '</p>';
         echo '<p class="watch-price">' . $priceInEuros . '€</p>';
+        echo '</div>';
         echo '</a>'; // Cierra el enlace aquí
     }
     echo '</div>';

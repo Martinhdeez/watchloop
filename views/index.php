@@ -16,7 +16,7 @@ require_once "../includes/functions.php";
 require_once "../includes/layout.php";
 sessionStatus();
 $db = new Db();
-$watch = new Watch($db, null, null, null, null, null);
+$watch = new Watch($db, null, null, null, null, null, null);
 
 // Obtener los datos de los relojes usando el método getWatchesArray()
 $watches = $watch->getWatchesArray();
@@ -27,16 +27,18 @@ if (!empty($watches)) {
     echo '<div class="table-container">';
     echo '<table id="watchesTable" class="display responsive nowrap">';
     echo '<thead><tr>';
-    echo '<th id="column-name">Nombre</th>';
-    echo '<th id="column-condition">Condición</th>';
-    echo '<th id="column-price">Precio</th>';
-    echo '<th id="column-image">Imagen</th>';
+    echo '<th id="column-name">Name</th>';
+    echo '<th id="column-name">Brand</th>';
+    echo '<th id="column-condition">Condition</th>';
+    echo '<th id="column-price">Price</th>';
+    echo '<th id="column-image">Image</th>';
     echo '</tr></thead><tbody>';
 
     // Recorrer los relojes y agregar cada uno a la tabla
     foreach ($watches as $watch) {
         echo '<tr class="watch-row">';
         echo '<td class="watch-name"><a class="watch-a" href = "../views/watchprofile.php?id='. $watch['id'].'">' . $watch['name'] . '</a></td>';
+        echo '<td class="watch-brand">'.$watch['brand'].'</td>';
         echo '<td class="watch-condition">' . $watch['condition'] . '</td>';
         echo '<td class="watch-price">' . $watch['price'] . '€</td>';
         echo '<td class="watch-image"><img src="' . $watch['image'] . '" alt="' . $watch['name'] . '" class="watch-image" style="width: 50px; height: 50px;"></td>';

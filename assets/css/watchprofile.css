@@ -114,7 +114,7 @@ body {
 #price {
     font-size: 20px;
     font-weight: bold;
-    color: #27ae60;
+    color: rgb(92, 88, 84);
     margin-bottom: 10px;
 }
 
@@ -157,7 +157,7 @@ body {
 }
 
 .contact-button {
-    background: #27ae60;
+    background: rgb(92, 88, 84);
     color: white;
     border: none;
     padding: 10px 15px;
@@ -168,5 +168,5 @@ body {
 }
 
 .contact-button:hover {
-    background: #219150;
+    background: rgb(68, 64, 59);
 }
