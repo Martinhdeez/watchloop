@@ -2,6 +2,10 @@
 require_once "../../includes/functions.php";
 session_start();
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 if (isset($_SESSION["username"])) {
     header("location: ../index.php");
 }
@@ -56,6 +60,7 @@ if (isset($_SESSION["username"])) {
                     <input type="text" placeholder="Surname" name="surname"value="<?=isset($_SESSION['form_data']['surname']) ? htmlspecialchars($_SESSION['form_data']['surname']) : ''; ?>" required>
                     <input type="text" placeholder="Username" name="rusername" value="<?=isset($_SESSION['form_data']['rusername']) ? htmlspecialchars($_SESSION['form_data']['rusername']) : ''; ?>" required>
                     <input type="text" placeholder="Email" name="email" value="<?=isset($_SESSION['form_data']['email']) ? htmlspecialchars($_SESSION['form_data']['email']) : ''; ?>" required>
+                    <input type="text" id="autocomplete" placeholder="Enter your location" name="location" required>
                     <input type="password" placeholder="Password" name="rpassword" required>
                     <input type="password" placeholder="Confirm Password" name="confirmPass" required>
                     <button id="register" name="register" type="submit">Sign up</button>

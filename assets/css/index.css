@@ -5,6 +5,12 @@
     padding-top: 5%;
 }
 
+
+.watch-a {
+    text-decoration: none;
+    color: black;
+}
+
 /* Estilos para la tabla */
 #watchesTable {
     width: 100%;

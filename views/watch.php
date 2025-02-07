@@ -55,6 +55,6 @@
 </div>
 
 
-<script src="../assets/js/carousel.js"></script> <!-- Nuevo archivo JS -->
+<script src="../assets/js/carousel.js"></script> 
 </body>
 </html>

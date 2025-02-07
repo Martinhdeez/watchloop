@@ -25,3 +25,6 @@ function displayImages($imagesPath){
         echo '<img class="watch-img" src="'.$path.'" alt="">';
     }
 }
+
+
+

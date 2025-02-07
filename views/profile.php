@@ -25,8 +25,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'];
     $surname = $_POST['surname'];
 
+    $location  =$_POST['location'];
+
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-    $user = $db->updateUser($name, $surname, $username, $email, $hashed_password, $user_id);
+    $user = $db->updateUser($name, $surname, $username, $email, $location, $hashed_password, $user_id);
 
     $_SESSION['username'] = $username;
     $_SESSION['success'] = 'User updated successfully';
@@ -73,6 +75,11 @@ require_once "../includes/header.php";
                     </div>
 
                     <div class="input">
+                        <label for="location">Location:</label>
+                        <input type="text" id="autocomplete" name="location" value="<?= htmlspecialchars($user['location']) ?>">
+                    </div>
+                      
+                    <div class="input">
                         <label for="password">New password :</label>
                         <input type="password" id="password" name="password">
                     </div>
@@ -83,6 +90,8 @@ require_once "../includes/header.php";
                 </form>
         </section>
     </div>
+
+
 </body>
 
 </html>

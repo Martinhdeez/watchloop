@@ -13,6 +13,7 @@ class User {
     public $email;
     public $password;
 
+    public $location;
     // Constructor que define una conexión a la base de datos y se le asigna a $conn
     public function __construct($db) {
         $this->conn = $db;
@@ -50,10 +51,10 @@ class User {
         }
 
         // Insertar nuevo usuario
-        $sql = "INSERT INTO " . $this->table . " (name, surname, username, email, password) VALUES (?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO " . $this->table . " (name, surname, username, email, location, password) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $this->conn->prepare($sql);
 
-        if ($stmt->execute([$this->name,$this->surname, $this->username, $this->email, $hashed_password])) {
+        if ($stmt->execute([$this->name,$this->surname, $this->username, $this->email, $this->location, $hashed_password])) {
             return true;
         } else {
             return "Error: " . $stmt->errorInfo()[2];

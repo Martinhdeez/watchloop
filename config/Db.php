@@ -5,7 +5,7 @@ class Db{
     private $username= "root";
     private $password= "";
     private $dbname= "watchloop_db";
-    private $conn;
+    public $conn;
 
     public function __construct() {
         $this->conn = $this->connect();
@@ -69,13 +69,13 @@ class Db{
         }
     }
 
-    public function updateUser($name, $surname, $username, $email, $password,  $user_id){
+    public function updateUser($name, $surname, $username, $email, $location, $password,  $user_id){
          
         if ($password) {
                 try {
-                    $stmt = $this->conn->prepare("UPDATE users SET name = ?, surname = ?, username = ?, email = ? , password = ? WHERE id = ?");
-                    if ($stmt->execute([$name, $surname, $username, $email, $password, $user_id])) {
-                        return ['id'=>$user_id, 'name'=> $name, 'surname' => $surname, 'username' => $username ,'email' => $email];
+                    $stmt = $this->conn->prepare("UPDATE users SET name = ?, surname = ?, username = ?, email = ?, location = ?, password = ? WHERE id = ?");
+                    if ($stmt->execute([$name, $surname, $username, $email, $location, $password, $user_id])) {
+                        return ['id'=>$user_id, 'name'=> $name, 'surname' => $surname, 'username' => $username ,'email' => $email, 'location' => $location];
                     }
                     return null;
                 } catch (PDOException $e) {

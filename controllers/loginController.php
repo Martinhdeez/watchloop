@@ -2,6 +2,11 @@
     require_once "../config/Db.php";
     require_once "../models/User.php";
     session_start();
+    
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
     if(isset($_POST['register'])){
          // Crear una instancia de la clase Database y establecer la conexión
@@ -16,6 +21,7 @@
             $user->surname = $_POST['surname'];
             $user->username = $_POST['rusername'];
             $user->email = $_POST['email'];
+            $user->location = $_POST['location'];
             $user->password = trim($_POST['rpassword']);
             $confirmPass = trim($_POST['confirmPass']);
 

@@ -22,7 +22,7 @@ class Watch{
     }
 
     public function upload(){
-        if (strlen($this->name) < 3 || strlen($this->name) > 50) {
+        if (strlen($this->name) || strlen($this->name) > 50) {
             return "Name must be between 3 and 50 characters.";
         }
         $sql = "INSERT INTO ". $this->table ."( user_id, name, description, wcondition, price) VALUES (?, ?, ?, ?, ?)";
@@ -71,7 +71,7 @@ class Watch{
             return ['error' => $e->getMessage()];
         }
     }
-
+    
     public function getAllWatches(){
         try {
             $stmt = $this->conn->prepare("SELECT * FROM ". $this->table);
@@ -179,10 +179,7 @@ public function displayWatches() {
         echo '<div class="error-message">' . $watches['error'] . '</div>';
         return;
     }
-
-    // Abre el contenedor principal
-    echo '<div class="watches-container">';
-
+    echo '<div class="watches-container">'; // Cambié 'container' a 'watches-container'
     // Recorre cada reloj y muestra su información en un div
     foreach ($watches as $watch) {
         $watchId = $watch['id']; // El ID del reloj
@@ -211,19 +208,16 @@ public function displayWatches() {
         $priceInEuros = number_format($watchPrice, 2); // Aquí podrías integrar una API de cambio de divisas
 
         // Muestra el div con la información del reloj
-        echo '<a class="watch-a" href = "../views/watch.php?id='. $watchId.'">';
-        echo '<div class="watch-card">';
+        echo '<a href="../views/watch.php?id='. $watchId .'" class="watch-card">'; // Ahora el enlace envuelve todo el div del reloj
         echo '<img src="' . $imageSrc . '" alt="' . $watchName . '" class="watch-image">';
-        echo '<h3 class="watch-name">' . $watchName . '</h3>';
+        echo '<p class="watch-name">' . $watchName . '</p>';
         echo '<p class="watch-condition">Condition: ' . $watchCondition . '</p>';
         echo '<p class="watch-price">' . $priceInEuros . '€</p>';
-        echo '</div>';
-        echo '</a>';
+        echo '</a>'; // Cierra el enlace aquí
     }
-
-    // Cierra el contenedor principal
     echo '</div>';
-    }
+}
+
 
 
     public function setExtension($watchId, $img){

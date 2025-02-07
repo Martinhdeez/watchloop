@@ -36,7 +36,7 @@ if (!empty($watches)) {
     // Recorrer los relojes y agregar cada uno a la tabla
     foreach ($watches as $watch) {
         echo '<tr class="watch-row">';
-        echo '<td class="watch-name">' . $watch['name'] . '</td>';
+        echo '<td class="watch-name"><a class="watch-a" href = "../views/watchprofile.php?id='. $watch['id'].'">' . $watch['name'] . '</a></td>';
         echo '<td class="watch-condition">' . $watch['condition'] . '</td>';
         echo '<td class="watch-price">' . $watch['price'] . '€</td>';
         echo '<td class="watch-image"><img src="' . $watch['image'] . '" alt="' . $watch['name'] . '" class="watch-image" style="width: 50px; height: 50px;"></td>';
@@ -64,6 +64,7 @@ $(document).ready(function() {
         "order": [[2, 'desc']] // Ordenar por precio, por ejemplo
     });
 });
+
 </script>
 
 </body>
