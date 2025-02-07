@@ -7,14 +7,16 @@
     display: flex;
     flex-direction: column;
     height: 90vh;
+    background: #f8f8f8;
 }
 
 .chat-header {
-    background-color: #f8f8f8;
+    background-color: rgb(92, 88, 84);
+    color: white;
     padding: 15px;
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #ddd;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 .watch-info {
@@ -58,25 +60,44 @@
     flex: 1;
     overflow-y: auto;
     padding: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
 .message {
     max-width: 75%;
-    padding: 8px 12px;
-    margin-bottom: 10px;
+    padding: 10px 15px;
+    margin: 5px;
     border-radius: 10px;
     font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    word-wrap: break-word;
 }
 
 .sent {
     background-color: #007bff;
     color: white;
     align-self: flex-end;
+    border-bottom-right-radius: 0;
 }
 
 .received {
     background-color: #f1f1f1;
     align-self: flex-start;
+    border-bottom-left-radius: 0;
+}
+
+.time {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.8);
+    align-self: flex-end;
+    margin-top: 5px;
+}
+
+.received .time {
+    color: rgba(0, 0, 0, 0.6);
 }
 
 .chat-input {
@@ -97,7 +118,7 @@
 .chat-input button {
     padding: 10px 15px;
     margin-left: 5px;
-    background-color: rgb(92, 88, 84);;
+    background-color: rgb(92, 88, 84);
     color: white;
     border: none;
     border-radius: 5px;
@@ -105,5 +126,5 @@
 }
 
 .chat-input button:hover {
-    background-color: rgb(49, 46, 43);;
+    background-color: rgb(49, 46, 43);
 }

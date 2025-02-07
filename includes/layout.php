@@ -37,25 +37,25 @@
           <span class="nav-tooltip">My watches</span>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">
-            <span class="nav-icon material-symbols-rounded">group</span>
-            <span class="nav-label">Team</span>
+          <a href="../views/mychats.php" class="nav-link">
+            <span class="nav-icon material-symbols-rounded">chat</span>
+            <span class="nav-label">My Chats</span>
           </a>
-          <span class="nav-tooltip">Team</span>
+          <span class="nav-tooltip">My Chats</span>
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link">
             <span class="nav-icon material-symbols-rounded">insert_chart</span>
-            <span class="nav-label">Analytics</span>
+            <span class="nav-label">Forum</span>
           </a>
-          <span class="nav-tooltip">Analytics</span>
+          <span class="nav-tooltip">Forum</span>
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link">
             <span class="nav-icon material-symbols-rounded">star</span>
-            <span class="nav-label">Bookmarks</span>
+            <span class="nav-label">Favorites</span>
           </a>
-          <span class="nav-tooltip">Bookmarks</span>
+          <span class="nav-tooltip">Favorites</span>
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link">

@@ -79,6 +79,8 @@ class Chat {
      * @return bool Resultado de la operación (true si se insertó correctamente).
      */
     public function sendMessage($chat_id, $sender_id, $receiver_id, $message) {
+        $chat_id = (int) $chat_id;
+        $receiver_id = (int) $receiver_id;  
         $sql = "INSERT INTO messages (chat_id, sender_id, receiver_id, message) VALUES (?, ?, ?, ?)";
         $stmt = $this->conn->prepare($sql);
         return $stmt->execute([$chat_id, $sender_id, $receiver_id, $message]);
@@ -93,28 +95,18 @@ class Chat {
     public function listChatsForUser($user_id) {
         $sql = "
             SELECT 
-                cu.chat_id,
+                cu.id AS id,  
                 cu.user1_id,
                 cu.user2_id,
-                cu.watch_id,
-                (
-                    SELECT message 
-                    FROM messages 
-                    WHERE chat_id = cu.chat_id 
-                    ORDER BY timestamp DESC LIMIT 1
-                ) AS last_message,
-                (
-                    SELECT timestamp 
-                    FROM messages 
-                    WHERE chat_id = cu.chat_id 
-                    ORDER BY timestamp DESC LIMIT 1
-                ) AS last_timestamp
+                cu.watch_id
             FROM chat_users cu
             WHERE cu.user1_id = ? OR cu.user2_id = ?
-            ORDER BY last_timestamp DESC
         ";
+    
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([$user_id, $user_id]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    
 }
+

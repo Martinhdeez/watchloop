@@ -26,23 +26,24 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             header("Location: ../views/chat.php?watch_id=$watch_id&receiver_id=$receiver_id&chat_id=$chat_id");
             exit();
         }
-
+        if($sender_id == $receiver_id){
+            header("Location: ../views/watch.php?id=$watch_id");
+            exit();
+        }
         // Crear el nuevo chat
         $stmt = $db->conn->prepare("INSERT INTO chat_users (user1_id, user2_id, watch_id) VALUES (?, ?, ?)");
         $stmt->execute([$sender_id, $receiver_id, $watch_id]);
 
         if ($stmt->rowCount() > 0) {
-            $chat = $stmt->fetch(PDO::FETCH_ASSOC);
-            $chat_id = $chat['id'];
+            $chat_id = $db->conn->lastInsertId();
             echo "Chat created\n";
             header("Location: ../views/chat.php?watch_id=$watch_id&receiver_id=$receiver_id&chat_id=$chat_id");
             exit();
         } else {
             $_SESSION["error"] = "Error creating chat";
             echo "Chat creation failed\n";
-            // Uncomment this to redirect to a fallback page in case of failure
-            // header("Location: ../views/watch.php?id=$watch_id");
-            // exit();
+            header("Location: ../index.php");
+            exit();
         }
     } catch (PDOException $e) {
         // Manejo de errores de base de datos

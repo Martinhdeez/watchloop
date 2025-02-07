@@ -1,0 +1,98 @@
+/* Asegura que el contenedor de chats ocupe el resto del espacio */
+.chats-container {
+    display: flex;
+    flex-direction: column;
+    gap: 35px; /* Aumentamos aún más el espacio entre chats */
+    padding: 40px; /* Más espacio interior */
+    max-width: calc(100% - 550px); /* Restar el ancho del aside */
+    margin-left: 550px; /* Mueve la columna de chats para que empiece después del aside */
+}
+
+/* Título centrado con color marrón grisáceo */
+.chat-header h2 {
+    text-align: center;
+    color: #6C4F3D; /* Color marrón grisáceo */
+    font-size: 36px; /* Aumentamos el tamaño del título */
+    font-weight: bold;
+    margin-bottom: 40px; /* Espacio debajo del título */
+}
+
+/* Estilo para cada chat */
+.chat-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Coloca los elementos a los extremos */
+    padding: 30px 40px; /* Aumentamos el padding para hacerlo más grande */
+    border: 2px solid #ddd; /* Borde más grueso */
+    border-radius: 20px; /* Bordes más redondeados */
+    background-color: #f4f4f4; /* Fondo claro */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Sombra más intensa */
+    text-decoration: none;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    font-size: 20px; /* Fuente más grande */
+    width: 100%;
+    max-width: 700px; /* Limitar el ancho máximo */
+    margin: 0 auto; /* Centrar los chats */
+}
+
+/* Efecto al pasar el mouse sobre un chat */
+.chat-item:hover {
+    background-color: #e2e2e2; /* Fondo ligeramente más oscuro */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+}
+
+/* Información del reloj */
+.watch-info {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 25px; /* Más espacio entre la imagen y los detalles */
+}
+
+/* Imagen del reloj */
+.watch-info img {
+    width: 100px; /* Imagen más grande */
+    height: 100px;
+    object-fit: cover;
+    border-radius: 15px; /* Bordes redondeados en la imagen */
+}
+
+/* Detalles del reloj */
+.watch-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px; /* Más espacio entre los detalles */
+}
+
+/* Títulos y precios */
+.watch-details h3 {
+    font-size: 24px; /* Título más grande */
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+}
+
+/* Nombre del usuario */
+.name {
+    font-size: 18px; /* Nombre más grande */
+    color: #666;
+}
+
+/* Precio del reloj */
+.price {
+    font-size: 18px; /* Precio más grande */
+    color: #444;
+}
+
+/* Icono de dirección */
+.chat-icon {
+    font-size: 32px; /* Icono más grande */
+    color: #007BFF; /* Color del icono */
+    transition: transform 0.3s ease;
+}
+
+/* Efecto al pasar el mouse sobre el icono */
+.chat-item:hover .chat-icon {
+    transform: translateX(5px); /* Mueve el icono hacia la derecha cuando se pasa el mouse */
+}

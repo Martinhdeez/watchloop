@@ -22,16 +22,24 @@ class Watch{
     }
 
     public function upload(){
-        if (strlen($this->name) || strlen($this->name) > 50) {
+        if (strlen($this->name) < 3 || strlen($this->name) > 50) {
             return "Name must be between 3 and 50 characters.";
         }
-        $sql = "INSERT INTO ". $this->table ."( user_id, name, description, wcondition, price) VALUES (?, ?, ?, ?, ?)";
+    
+        $sql = "INSERT INTO " . $this->table . " (user_id, name, description, wcondition, price) VALUES (?, ?, ?, ?, ?)";
         $stmt = $this->conn->prepare($sql);
         $res = $stmt->execute([$this->user_id, $this->name, $this->description, $this->condition, $this->price]); 
-        if($res){
+    
+        if ($res) {
             $this->id = $this->conn->lastInsertId();
+            if (!$this->id) {
+                echo "lastInsertId() no devolvió ningún valor.";
+            } else {
+                echo 'Archivo con id: ' . $this->id;
+            }
             return $res;
-        }else{
+        } else {
+            print_r($stmt->errorInfo());
             return "Error: " . $stmt->errorInfo()[2];
         }
     }
