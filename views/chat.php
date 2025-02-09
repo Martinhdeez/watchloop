@@ -26,6 +26,10 @@ if(!$chat_id){
     die("Error: Chat not found");
 }
 
+if($_SESSION['user_id'] != $receiver_id && $_SESSION['user_id'] != $sender_id){
+    die("This chat are not yours.");
+}
+
 if (!$receiver_id || !$sender_id) {
     die("Error: Invalid user ID.");
 }
@@ -85,7 +89,65 @@ $imagePath = $w->setExtension($watch['id'], "main");
     </section>
 </div>
 
-<script src="../assets/js/chat.js"></script>
+<script>
+    const chatMessages = document.getElementById("chatMessages");
+    const chatId = "<?= $chat_id ?>"; // Chat ID actual
+
+    const options = { hour: "2-digit", minute: "2-digit", hour12: false }; // 24h sin segundos
+
+    function actualizarChat() {
+        fetch(`../api/getMessages.php?chat_id=${chatId}`)
+            .then(response => response.json())
+            .then(messages => {
+                chatMessages.innerHTML = ""; // Limpiar mensajes antiguos
+                messages.forEach(message => {
+                    const div = document.createElement("div");
+                    div.classList.add("message", message.sender_id == "<?= $sender_id ?>" ? "sent" : "received");
+                    div.innerHTML = `
+                        <p>${message.message}</p>
+                        <span class="time">${new Date(message.timestamp).toLocaleTimeString("es-ES", options)}</span>
+                    `;
+                    chatMessages.appendChild(div);
+                });
+
+                chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll hacia abajo
+            });
+    }
+
+    // Actualiza el chat cada 2 segundos
+    setInterval(actualizarChat, 2000);
+    actualizarChat(); // Cargar mensajes al inicio
+
+    // Enviar mensaje sin recargar la página
+    document.querySelector(".chat-input").addEventListener("submit", function(event) {
+        event.preventDefault();
+        const mensajeInput = document.getElementById("messageInput");
+        const mensaje = mensajeInput.value.trim();
+        if (mensaje === "") return;
+
+        fetch("../api/sendMessage.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                chat_id: chatId,
+                sender_id: "<?= $sender_id ?>",
+                receiver_id: "<?= $receiver_id ?>",
+                message: mensaje
+            })
+        }).then(() => {
+            mensajeInput.value = "";
+            actualizarChat();
+        });
+    });
+
+    // Auto-scroll al último mensaje
+    function scrollToBottom() {
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    // Llamar la función al cargar la página
+    document.addEventListener("DOMContentLoaded", scrollToBottom);
+</script>
 
 </body>
 </html>

@@ -16,7 +16,7 @@
 
         $db = new Db();
 
-        $watch = new Watch($db, $_SESSION['user_id'], null, null, null, null);
+        $watch = new Watch($db, $_SESSION['user_id'], null, null, null, null, null);
         $res = $watch->upgrade($watchId, $name, $description, $condition, $price);
         if ($res) {
             $_SESSION['success'] = "Watch details updated successfully";
@@ -31,7 +31,7 @@
     if(isset($_POST["delete"])){
         $id = $_POST["watchId"];
         $db = new Db();
-        $watch = new Watch($db, null, null, null, null, null);  
+        $watch = new Watch($db, null, null, null, null, null, null);  
         $res = $watch->delete($id);
         if ($res) {
             $_SESSION["success"] = "Watch deleted successfully";
