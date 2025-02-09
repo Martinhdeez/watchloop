@@ -35,8 +35,11 @@ $chat = new Chat();
 if(isset($_POST['send'])){
     $message = $_POST['message'];
     $chat->sendMessage( $chat_id, $sender_id, $receiver_id, $message);
-}
 
+    // Redirige para evitar el reenvío del formulario
+    header("Location: chat.php?watch_id=$watch_id&receiver_id=$receiver_id&chat_id=$chat_id");
+    exit();
+}
 $messages = $chat->getMessages($chat_id);
 
 $db = new Db();

@@ -39,7 +39,7 @@
           
             $user = $db->getUser($receiver_id);
             ?>
-            <a href="chat.php?watch_id=<?=$chat['watch_id']?>&receiver_id=<?=$receiver_id?>&chat_id=<?=$chat['id']?>" >
+            <a href="chat.php?watch_id=<?=$chat['watch_id']?>&receiver_id=<?=$receiver_id?>&chat_id=<?=$chat['chat_id']?>" >
                 <div class="watch-info">
                     <img src="<?= htmlspecialchars($imagePath); ?>" alt="Watch Image">
                     <div class="watch-details">

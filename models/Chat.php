@@ -92,21 +92,28 @@ class Chat {
      * @param int $user_id ID del usuario.
      * @return array Lista de chats con información adicional.
      */
+
+
     public function listChatsForUser($user_id) {
         $sql = "
             SELECT 
-                cu.id AS id,  
+                cu.id AS chat_id,  
                 cu.user1_id,
                 cu.user2_id,
-                cu.watch_id
+                cu.watch_id,
+                MAX(m.timestamp) AS last_message_time
             FROM chat_users cu
+            LEFT JOIN messages m ON cu.id = m.chat_id
             WHERE cu.user1_id = ? OR cu.user2_id = ?
+            GROUP BY cu.id
+            ORDER BY last_message_time DESC
         ";
     
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([$user_id, $user_id]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    
     
 }
 

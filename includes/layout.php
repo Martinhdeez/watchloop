@@ -51,7 +51,7 @@
           <span class="nav-tooltip">Forum</span>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="../views/favorites.php" class="nav-link">
             <span class="nav-icon material-symbols-rounded">star</span>
             <span class="nav-label">Favorites</span>
           </a>
