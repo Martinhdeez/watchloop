@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 09-02-2025 a las 13:17:01
+-- Tiempo de generación: 09-02-2025 a las 19:34:02
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -47,7 +47,8 @@ INSERT INTO `chat_users` (`id`, `user1_id`, `user2_id`, `watch_id`) VALUES
 (8, 1, 5, 36),
 (9, 5, 4, 32),
 (10, 6, 5, 34),
-(11, 5, 1, 28);
+(11, 5, 1, 28),
+(12, 7, 1, 28);
 
 -- --------------------------------------------------------
 
@@ -140,7 +141,27 @@ INSERT INTO `messages` (`id`, `chat_id`, `sender_id`, `receiver_id`, `message`, 
 (50, 1, 1, 5, 'probando', '2025-02-09 12:14:16'),
 (51, 1, 1, 5, 'probando', '2025-02-09 12:14:29'),
 (52, 1, 1, 5, 'probando', '2025-02-09 12:14:32'),
-(53, 1, 1, 5, 'hola?', '2025-02-09 12:14:43');
+(53, 1, 1, 5, 'hola?', '2025-02-09 12:14:43'),
+(54, 7, 1, 5, 'probando', '2025-02-09 12:22:25'),
+(55, 7, 5, 1, 'holaa', '2025-02-09 12:27:26'),
+(56, 7, 1, 5, 'q tall??', '2025-02-09 12:27:35'),
+(57, 7, 5, 1, 'holaaa', '2025-02-09 12:30:07'),
+(58, 7, 5, 1, 'probandooo', '2025-02-09 12:30:23'),
+(59, 7, 5, 1, 'hola??', '2025-02-09 12:34:34'),
+(60, 7, 5, 1, 'q tal??', '2025-02-09 12:34:40'),
+(61, 7, 5, 1, 'porbando', '2025-02-09 12:39:06'),
+(62, 7, 1, 5, 'kolaa', '2025-02-09 12:40:22'),
+(63, 7, 5, 1, 'hola leooo', '2025-02-09 12:40:23'),
+(64, 7, 5, 1, 'q tall??', '2025-02-09 12:40:28'),
+(65, 7, 1, 5, 'hola feo', '2025-02-09 12:40:28'),
+(66, 7, 5, 1, 'tonto', '2025-02-09 12:40:37'),
+(67, 7, 1, 5, 'biennn aqui con mi hermano el pesao', '2025-02-09 12:40:41'),
+(68, 7, 1, 5, 'bueno por cuanto mwe das el reloj', '2025-02-09 12:40:57'),
+(69, 7, 5, 1, '5 eurillos va', '2025-02-09 12:41:07'),
+(70, 7, 1, 5, 'va 2 eurillos', '2025-02-09 12:41:26'),
+(71, 12, 7, 1, 'Subnormal', '2025-02-09 12:49:04'),
+(72, 12, 1, 7, 'holaa', '2025-02-09 12:49:21'),
+(73, 12, 1, 7, 'tonto', '2025-02-09 12:49:32');
 
 -- --------------------------------------------------------
 
@@ -170,7 +191,8 @@ INSERT INTO `users` (`id`, `name`, `surname`, `username`, `email`, `password`, `
 (3, 'yety', 'piquin', 'yety', 'yety@gmail.com', '$2y$10$TU3DF7UqA7mdrkizBoPv9eCWfjLrxfOiveiX9DJ7iPezlt964SShG', '', '2025-01-26 16:32:05', '2025-01-26 17:33:07'),
 (4, 'ariana', 'a', 'aari', 'yrjj@gmail.com', '$2y$10$gzm3N4t4pSv0nUglN2hbFOEjN.KUPL0mH/8DDJmUs9Mv/oKE3ad8.', '', '2025-01-29 22:41:51', '2025-02-07 13:30:33'),
 (5, 'new', 'user', 'newuser', 'newuser@gmail.com', '$2y$10$v0uqosOgLZy0p314fLcNzOJKbSNdWuH7ZE5fy3FTx58JW6qCOxZjq', 'Pontevedra', '2025-02-06 20:23:53', '2025-02-06 21:23:53'),
-(6, 'Lucas', 'Ortins', 'cortins', 'lucasochandomonte@gmail.com', '$2y$10$PIPFBDX8oRePQffk5EBxGelhiErqaAHHcl9S1WSsbYYzdHOV5NoPG', 'Pontevedra', '2025-02-08 18:34:50', '2025-02-08 19:34:50');
+(6, 'Lucas', 'Ortins', 'cortins', 'lucasochandomonte@gmail.com', '$2y$10$PIPFBDX8oRePQffk5EBxGelhiErqaAHHcl9S1WSsbYYzdHOV5NoPG', 'Pontevedra', '2025-02-08 18:34:50', '2025-02-08 19:34:50'),
+(7, 'manuel', 'h', 'manisi', 'manuhernan007@gmail.com', '$2y$10$8gN102Qpdob37zIpyyX02OFp9id8fqeIZ3rRLe7cxKIpOoS.1UXEu', 'Pont', '2025-02-09 12:47:48', '2025-02-09 13:47:48');
 
 -- --------------------------------------------------------
 
@@ -195,7 +217,7 @@ CREATE TABLE `watches` (
 --
 
 INSERT INTO `watches` (`id`, `user_id`, `name`, `description`, `brand`, `price`, `wcondition`, `created_at`, `updated_at`) VALUES
-(25, 1, ' TISSOT PRX powermatic 80', 'Reloj en muy buen estado y está como nuevo', 'TISSOT', 450, 'LIKENEW', '2025-01-27 12:15:42', '2025-02-07 20:55:51'),
+(25, 1, ' TISSOT PRX powermatic 80', 'Reloj en muy buen estado y está como nuevo', 'TISSOT', 410, 'LIKENEW', '2025-01-27 12:15:42', '2025-02-09 18:29:53'),
 (26, 1, 'Rolex DateJust', 'Relog en perfectas condiciones, como nuevo', 'ROLEX', 5000, 'NEW', '2025-01-27 14:51:54', '2025-02-07 20:55:56'),
 (28, 1, 'PATEK Philippe Nautilus 5 ', 'Lujurioso e impresionante reloj', 'PATEK', 20000, 'LIKENEW', '2025-01-27 14:56:25', '2025-02-07 20:56:01'),
 (31, 2, 'TISSOT PRS 516', 'Fantastico TIssot PRS 516 , reloj que viene de los campeonatos de rally', 'TISSOT', 300, 'BRANDNEW', '2025-01-29 19:11:19', '2025-02-07 20:56:05'),
@@ -254,7 +276,7 @@ ALTER TABLE `watches`
 -- AUTO_INCREMENT de la tabla `chat_users`
 --
 ALTER TABLE `chat_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `favorites`
@@ -266,13 +288,13 @@ ALTER TABLE `favorites`
 -- AUTO_INCREMENT de la tabla `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `watches`
