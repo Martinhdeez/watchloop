@@ -196,7 +196,7 @@ public function displayWatches() {
     foreach ($watches as $watch) {
         $watchId = $watch['id']; // El ID del reloj
         $watchName = htmlspecialchars($watch['name']); // Nombre del reloj
-        $watchCondition = $this->getConditionLabel($watch['wcondition']); // Condición del reloj
+        $watchCondition = ($this->getConditionLabel($watch['wcondition'])); // Condición del reloj
         $watchPrice = htmlspecialchars($watch['price']); // Precio del reloj
         $imagePathBase = "../publicIMG/$user_id/watch_$watchId/main"; // Ruta base de la imagen
 
@@ -220,14 +220,17 @@ public function displayWatches() {
         $priceInEuros = number_format($watchPrice, 2); // Aquí podrías integrar una API de cambio de divisas
 
         // Muestra el div con la información del reloj
-        echo '<div  class="watch-card">';
-        echo '<a href="../views/watch.php?id='. $watchId .'">'; // Ahora el enlace envuelve todo el div del reloj
+        echo '<div class="watch-card">';
+        echo '<a href="../views/watch.php?id='. $watchId .'">';
         echo '<img src="' . $imageSrc . '" alt="' . $watchName . '" class="watch-image">';
+        echo '<div class="watch-details">';
         echo '<p class="watch-name">' . $watchName . '</p>';
-        echo '<p class="watch-condition">Condition: ' . $watchCondition . '</p>';
+        echo '<p class="watch-condition">' . $watchCondition . '</p>';
         echo '<p class="watch-price">' . $priceInEuros . '€</p>';
-        echo '</div>';
-        echo '</a>'; // Cierra el enlace aquí
+        echo '</div>'; // Cierra el div watch-details
+        echo '</a>'; // Cierra el enlace
+        echo '</div>'; // Cierra el div watch-card
+        
     }
     echo '</div>';
 }
@@ -267,4 +270,4 @@ public function displayWatches() {
         return $imagePath; // Devuelve el arreglo con las rutas generadas
     }
     
-}
+} 

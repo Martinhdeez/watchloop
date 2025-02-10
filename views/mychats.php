@@ -31,6 +31,7 @@
     </header>
     
     <div class="chats-container">
+        
         <?php foreach ($chats as $chat): 
             $watch = $w->getWatchById($chat['watch_id']);
             $receiver_id = ($chat['user1_id'] == $_SESSION['user_id']) ? $chat['user2_id'] : $chat['user1_id'];
@@ -39,6 +40,7 @@
           
             $user = $db->getUser($receiver_id);
             ?>
+            <div class="chat">
             <a href="chat.php?watch_id=<?=$chat['watch_id']?>&receiver_id=<?=$receiver_id?>&chat_id=<?=$chat['chat_id']?>" >
                 <div class="watch-info">
                     <img src="<?= htmlspecialchars($imagePath); ?>" alt="Watch Image">
@@ -47,9 +49,9 @@
                         <p class="price"><?= htmlspecialchars($watch['price']); ?>€</p>
                         <p class="name"><?= htmlspecialchars($user['name'])." ".htmlspecialchars($user['surname']); ?></p>
                     </div>
-                    <span class="material-symbols-rounded chat-icon">chevron_right</span>
                 </div>
             </a>
+            </div>
         <?php endforeach; ?>
     </div>
 </body>

@@ -1,112 +1,240 @@
-/* Asegura que el contenedor de chats ocupe el resto del espacio */
+* {
+    text-decoration: none;
+}
+
+/* Contenedor principal del chat */
 .chats-container {
     display: flex;
     flex-direction: column;
-    gap: 35px; /* Aumentamos aún más el espacio entre chats */
-    padding: 40px; /* Más espacio interior */
-    max-width: calc(100% - 550px); /* Restar el ancho del aside */
+    gap: 20px;
+    padding: 20px;
+    max-width: 70%; /* Ocupar más ancho */
+    margin: 0 auto;
+    margin-left: 450px; /* Margen izquierdo de 450px */
+    border-radius: 10px; /* Bordes redondeados para el contenedor principal */
+    border: 2px solid #ddd; /* Borde alrededor de todo el contenedor */
+    background-color: #f9f9f9; /* Fondo suave para todo el contenedor */
 }
 
-/* Título centrado con color marrón grisáceo */
-.chat-header h2 {
+/* Encabezado */
+.chat-header {
     text-align: center;
-    color: rgb(104, 100, 96); /* Color marrón grisáceo */
-    font-size: 36px; /* Aumentamos el tamaño del título */
+    font-size: 24px;
     font-weight: bold;
-    margin-bottom: 40px; /* Espacio debajo del título */
-    position: absolute;
-    margin-left: 42%;
-    margin-top: 15px;
-    
+    padding: 15px;
+    color: rgb(104, 100, 96); /* Color estilo WhatsApp */
+    background: none; /* Sin fondo */
+    border-bottom: none; /* Eliminar borde inferior */
 }
 
-.chats-container{
-    margin-top: 5%;
-    position:absolute;
-    display: box;
-    border: 1px solid  rgb(104, 100, 96);
-    border-radius: 20px;
-    width: 60%;
-    margin-left: 20%;
-}
-
-
-/* Estilo para cada chat */
-.chat-item {
+/* Cada chat */
+.chat {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Coloca los elementos a los extremos */
-    padding: 30px 40px; /* Aumentamos el padding para hacerlo más grande */
-    border: 2px solid #ddd; /* Borde más grueso */
-    border-radius: 20px; /* Bordes más redondeados */
-    background-color: #f4f4f4; /* Fondo claro */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Sombra más intensa */
+    gap: 20px; /* Mayor espacio entre los elementos */
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 15px; /* Bordes redondeados para los chats */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra más grande */
     text-decoration: none;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    font-size: 20px; /* Fuente más grande */
-    width: 100%;
-    max-width: 700px; /* Limitar el ancho máximo */
-    margin: 0 auto; /* Centrar los chats */
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    font-size: 18px; /* Aumentar el tamaño de fuente */
+    margin-right: 20px; /* Margen a la derecha */
+    border-bottom: 2px solid #ddd; /* Borde inferior visible */
 }
 
-/* Efecto al pasar el mouse sobre un chat */
-.chat-item:hover {
-    background-color: #e2e2e2; /* Fondo ligeramente más oscuro */
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+/* Efecto al pasar el mouse */
+.chat:hover {
+    background: #f0f0f0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Aumentar sombra al pasar el ratón */
 }
 
-/* Información del reloj */
+/* Información del chat (reloj y usuario) */
 .watch-info {
     display: flex;
     align-items: center;
+    gap: 20px; /* Mayor espacio entre imagen y detalles */
     width: 100%;
-    gap: 25px; /* Más espacio entre la imagen y los detalles */
 }
 
 /* Imagen del reloj */
 .watch-info img {
-    width: 100px; /* Imagen más grande */
-    height: 100px;
+    width: 90px; /* Imagen aún más grande */
+    height: 90px;
     object-fit: cover;
-    border-radius: 15px; /* Bordes redondeados en la imagen */
+    border-radius: 50%;
+    border: 3px solid rgb(104, 100, 96); /* Bordes más gruesos para las imágenes */
 }
 
-/* Detalles del reloj */
+/* Detalles del reloj y usuario */
 .watch-details {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 10px; /* Más espacio entre los detalles */
 }
 
-/* Títulos y precios */
+/* Nombre del reloj */
 .watch-details h3 {
-    font-size: 24px; /* Título más grande */
-    font-weight: bold;
+    font-size: 20px; /* Aumentar tamaño de fuente */
     color: #333;
     margin: 0;
+    font-weight: bold;
+}
+
+/* Precio */
+.price {
+    font-size: 18px; /* Aumentar tamaño de fuente */
+    color: rgb(104, 100, 96); /* Verde estilo WhatsApp */
+    font-weight: bold;
 }
 
 /* Nombre del usuario */
 .name {
-    font-size: 18px; /* Nombre más grande */
+    font-size: 16px; /* Aumentar tamaño de fuente */
     color: #666;
-}
-
-/* Precio del reloj */
-.price {
-    font-size: 18px; /* Precio más grande */
-    color: #444;
 }
 
 /* Icono de dirección */
 .chat-icon {
-    font-size: 32px; /* Icono más grande */
-    color: #007BFF; /* Color del icono */
+    font-size: 32px; /* Aumentar el tamaño del icono */
+    color: rgb(104, 100, 96);
     transition: transform 0.3s ease;
 }
 
 /* Efecto al pasar el mouse sobre el icono */
-.chat-item:hover .chat-icon {
-    transform: translateX(5px); /* Mueve el icono hacia la derecha cuando se pasa el mouse */
+.chat:hover .chat-icon {
+    transform: translateX(5px);
+}
+
+/* Ajustar margen-right y borde inferior para todos los chats */
+.chat:not(:last-child) {
+    border-bottom: 2px solid #ddd; /* Borde inferior visible */
+    margin-right: 20px; /* Margen derecho */
+}
+
+/* Media Queries para hacerlo responsive */
+
+/* Cuando el ancho sea menor o igual a 1020px */
+@media (max-width: 1020px) {
+    .chats-container {
+        margin-left: 15%; /* Reducir margen izquierdo */
+        margin-top: 15px; /* Aumentar margen superior */
+    }
+
+    .chat-header h2{
+        padding: 10px; /* Reducir el padding */
+        margin-top: 14%;
+    }
+
+
+
+    .chat {
+        flex-direction: column; /* Apilar los elementos del chat verticalmente */
+        font-size: 16px; /* Reducir tamaño de fuente */
+        padding: 15px; /* Reducir el padding */
+    }
+
+    .watch-info {
+        flex-direction: column; /* Apilar imagen y detalles verticalmente */
+        gap: 15px; /* Reducir el espacio */
+    }
+
+    .watch-info img {
+        width: 80px; /* Reducir tamaño de la imagen */
+        height: 80px;
+    }
+
+    .watch-details h3 {
+        font-size: 18px; /* Reducir el tamaño del nombre */
+    }
+
+    .price {
+        font-size: 16px; /* Reducir el tamaño del precio */
+    }
+
+    .name {
+        font-size: 14px; /* Reducir el tamaño del nombre de usuario */
+    }
+
+    .chat-icon {
+        font-size: 28px; /* Reducir el tamaño del icono */
+    }
+}
+
+/* Cuando el ancho sea menor o igual a 768px */
+@media (max-width: 768px) {
+    .chats-container {
+        margin-top: 20px; /* Ajustar el margen superior */
+        width: 100%;
+    }
+
+    .chat-header {
+        font-size: 20px; /* Reducir tamaño del encabezado */
+        padding: 8px; /* Reducir padding */
+    }
+
+    .chat {
+        font-size: 14px; /* Reducir tamaño de fuente */
+        padding: 10px; /* Reducir padding */
+    }
+
+    .watch-info img {
+        width: 70px; /* Reducir aún más tamaño de la imagen */
+        height: 70px;
+    }
+
+    .watch-details h3 {
+        font-size: 16px; /* Reducir tamaño del nombre */
+    }
+
+    .price {
+        font-size: 14px; /* Reducir tamaño del precio */
+    }
+
+    .name {
+        font-size: 12px; /* Reducir tamaño del nombre de usuario */
+    }
+
+    .chat-icon {
+        font-size: 24px; /* Reducir tamaño del icono */
+    }
+}
+
+/* Cuando el ancho sea menor o igual a 480px */
+@media (max-width: 480px) {
+    .chats-container {
+        margin-top: 10px; /* Reducir margen superior */
+        margin-left: 15%;
+    }
+
+    .chat-header h2{
+        padding: 5px; /* Reducir padding */
+        margin-top: 20%;
+    }
+
+    .chat {
+        font-size: 12px; /* Reducir tamaño de fuente */
+        padding: 8px; /* Reducir padding */
+    }
+
+    .watch-info img {
+        width: 60px; /* Reducir aún más tamaño de la imagen */
+        height: 60px;
+    }
+
+    .watch-details h3 {
+        font-size: 14px; /* Reducir tamaño del nombre */
+    }
+
+    .price {
+        font-size: 12px; /* Reducir tamaño del precio */
+    }
+
+    .name {
+        font-size: 10px; /* Reducir tamaño del nombre de usuario */
+    }
+
+    .chat-icon {
+        font-size: 20px; /* Reducir tamaño del icono */
+    }
 }

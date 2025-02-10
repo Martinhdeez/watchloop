@@ -1,6 +1,6 @@
 .chat-container {
-    max-width: 500px;
-    margin: auto;
+    max-width: 1000px; /* Aumentar el ancho del chat */
+    margin:auto; /* Alejarlo un poco de la parte superior */
     border: 1px solid #ddd;
     border-radius: 10px;
     overflow: hidden;
@@ -8,26 +8,34 @@
     flex-direction: column;
     height: 90vh;
     background: #f8f8f8;
+    position: absolute;
+    left: 20%;
+    top: 5%;
+    width: 50%;
 }
 
 .chat-header {
-    background-color: rgb(92, 88, 84);
+    background-color: rgba(71, 71, 58, 0.5); /* Fondo más cálido */
     color: white;
-    padding: 15px;
-    text-align: center;
-    font-size: 18px;
+    padding: 20px; /* Aumentar espacio dentro del header */
+    text-align: left;
+    font-size: 20px; /* Aumentar tamaño de fuente */
     font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 120px; /* Hacer el header más grande */
 }
 
 .watch-info {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
 }
 
 .watch-info img {
-    width: 50px;
-    height: 50px;
+    width: 70px; /* Hacer la imagen más grande */
+    height: 70px;
     border-radius: 5px;
     object-fit: cover;
 }
@@ -35,16 +43,19 @@
 .watch-details {
     display: flex;
     flex-direction: column;
+    margin-left: 10px;
 }
 
 .watch-details h3 {
     margin: 0;
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .watch-details .price {
-    color: #28a745;
+    color: #fff; /* Cambiar precio a blanco */
     font-weight: bold;
+    font-size: 16px;
+    margin-top: 5px;
 }
 
 .chat-window {
@@ -127,4 +138,20 @@
 
 .chat-input button:hover {
     background-color: rgb(49, 46, 43);
+}
+
+/* Para cuando el ancho sea menor o igual a 1460px */
+@media (max-width: 1460px) {
+    .chat-container {
+        left: 25%;
+    }
+}
+
+/* Para cuando el ancho sea menor o igual a 1024px */
+@media (max-width: 1024px) {
+    .chat-container {
+        top: 15%;
+        left: 0;
+        width: 100%;
+    }
 }

@@ -26,6 +26,7 @@ h1#title {
     margin: auto;
 }
 
+/* Estilo individual para cada tarjeta de reloj */
 .watch-card {
     background-color: #fff;
     border-radius: 10px;
@@ -34,47 +35,66 @@ h1#title {
     display: flex;
     flex-direction: column;
     transition: transform 0.3s ease-in-out;
-    width: 250px !important; /* Tamaño fijo de las cajas */
+    width: 250px; /* Asegura que todas las tarjetas tengan el mismo ancho */
     text-decoration: none;
-    justify-self: center; /* Asegura que no ocupen el 100% del ancho */
 }
 
+/* Efecto hover de la tarjeta */
 .watch-card:hover {
     transform: translateY(-10px);
 }
 
-.watch-card img {
+/* Imagen del reloj */
+.watch-image {
+    height: 200px; /* Ajusta la altura para un aspecto uniforme */
+    object-fit: cover; /* Recorta la imagen sin deformar */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     width: 100%;
-    height: 200px;
-    object-fit: cover;
 }
 
-.watch-card .content {
+/* Contenedor de contenido dentro de la tarjeta */
+.watch-details {
     padding: 15px;
 }
 
-.watch-card .watch-name {
+/* Nombre del reloj */
+.watch-name {
     font-size: 16px;
     font-weight: bold;
     color: #333;
     margin-bottom: 10px;
-    text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
 }
 
-.watch-card .watch-price {
+/* Condición del reloj */
+.watch-condition {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+/* Precio del reloj */
+.watch-price {
     font-size: 17px;
     color: rgb(48, 47, 47);
     font-weight: bold;
-    margin-top: 10px;
     text-align: right;
 }
 
-.watch-card .watch-condition {
-    font-size: 14px;
-    color: #888;
+/* Estilo de los enlaces dentro de las tarjetas */
+.watch-card a {
+    color: inherit;
+    text-decoration: none;
 }
+
+/* Añadir un borde alrededor de cada tarjeta */
+.watch-card {
+    border: 1px solid #ddd; /* Borde gris claro */
+}
+
 
 /* Ajustes responsivos */
 @media (max-width: 1024px) {

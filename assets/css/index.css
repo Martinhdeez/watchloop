@@ -1,49 +1,210 @@
-
-.table-container {
-    width: 60%;
-    margin-left: 25%;
-    padding-top: 5%;
-}
-
-
-.watch-a {
-    text-decoration: none;
-    color: black;
-}
-
-/* Estilos para la tabla */
-#watchesTable {
-    width: 100%;
-    border-collapse: collapse;
+/* --- Estilos generales --- */
+* {
+    text-decoration: none !important;
+    box-sizing: border-box;
     margin: 0;
+    padding: 0;
 }
 
-/* Estilo para las celdas de la tabla */
-#column-name, #column-condition, #column-price, #column-image {
+
+
+/* --- DataTable adaptada a tarjetas --- */
+/* Oculta la cabecera de la tabla */
+#watchesTable thead {
+    display: none;
+}
+
+/* Convierte el tbody en un contenedor flexible (grid) */
+#watchesTable tbody {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Cada fila se comporta como una tarjeta */
+#watchesTable tbody tr {
+    display: block;
+    width: 250px; /* Ancho fijo para cada tarjeta */
+    margin: 10px;
+    border: none;
+}
+
+/* Remueve padding y bordes de la celda */
+#watchesTable tbody tr td {
+    padding: 0;
+    border: none;
+}
+
+/* Ajustar el margen de la tabla */
+.dataTables_wrapper {
+    position: relative;
+    margin-left: 450px;/* Separación para evitar que el aside la cubra */
+    width: calc(100% - 550px); /* Ajustar el ancho para que no se desborde */
+    overflow-x: auto; /* Evitar problemas en pantallas pequeñas */
+    padding-top: 100px; /* Ajusta según lo necesario */
+}
+
+
+/* Ajusta el contenedor del buscador de DataTables */
+.dataTables_wrapper .dataTables_filter {
+    position: absolute;
+    top: 20px ;  
+    left: 45%;    
     text-align: center;
-    padding: 10px;
+    transform: translateX(-50%);
+    margin-bottom: 20px;
 }
 
-/* Estilo para las filas */
-.watch-row {
-    background-color: #f9f9f9;
+/* --- Estilos de la tarjeta (adaptados de tu diseño de cajas) --- */
+.watch-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease-in-out;
+    width: 250px;  /* Aseguramos el ancho coincida con el de la celda */
+    text-decoration: none;
 }
 
-/* Imágenes dentro de la tabla */
-.watch-image img {
-    max-width: 50px;
-    max-height: 50px;
-    border-radius: 5px;
+.watch-card:hover {
+    transform: translateY(-10px);
 }
 
-/* Estilo de las celdas de cada columna */
-.watch-name, .watch-condition, .watch-price, .watch-image {
-    text-align: center;
+.watch-img {
+    height: 200px;      /* Fija la altura para que todas tengan la misma proporción */
+    object-fit: cover;  /* Recorta la imagen para llenar el espacio sin deformarse */
+    border-top-left-radius: 10px; /* Opcional: redondea las esquinas superiores */
+    border-top-right-radius: 10px;
+    max-width: 250px !important;
 }
 
-/* Estilo del contenedor de error */
-.error-message {
-    color: red;
-    text-align: center;
+.watch-card .content {
+    padding: 15px;
+}
+
+.watch-card .watch-name {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.watch-card .watch-brand {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.watch-card .watch-condition {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 5px;
+}
+
+.watch-card .watch-price {
+    font-size: 17px;
+    color: rgb(48, 47, 47);
+    font-weight: bold;
+    text-align: right;
+}
+
+
+.custom-search-container {
+    display: flex;
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    width: 100%;
     margin-top: 20px;
+    padding-right:30%;
+}
+
+/* Estilos para el contenedor personalizado del buscador */
+.custom-search {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+}
+
+/* Estilos para el input de búsqueda */
+.custom-search input {
+    border-radius: 20px !important;
+    padding: 10px 15px 10px 40px; /* Espacio a la izquierda para el icono */
+    border: 2px solid #ccc;
+    outline: none;
+    font-size: 16px;
+    width: 300px;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Icono de lupa */
+.custom-search i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+    font-size: 16px;
+}
+
+/* Estilos para el botón de filtros (toggle) */
+.filter-toggle-btn {
+    border-radius: 20px;
+    padding: 10px 20px;
+    margin-left: 10px;
+    border: 1px solid #ccc;
+    background-color: #f8f8f8;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.filter-toggle-btn:hover,
+.filter-toggle-btn.active {
+    background-color: #e0e0e0;
+}
+
+/* Estilos para el panel de filtros */
+.filters-panel {
+    display: none; /* Se muestra/oculta mediante jQuery */
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 0 auto 20px; /* Centrado horizontal y margen inferior */
+}
+
+.filters-inner label {
+    margin: 0 5px;
+    font-weight: bold;
+}
+
+.filters-inner input,
+.filters-inner select {
+    margin: 0 10px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.filter-apply-btn {
+    border-radius: 20px;
+    padding: 8px 15px;
+    margin-left: 10px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.filter-apply-btn:hover {
+    background-color: #e0e0e0;
 }
